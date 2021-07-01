@@ -1,4 +1,4 @@
-fetch('https://raw.githubusercontent.com/apache/airavata-site/asf-site/source/_data/team.yml')
+fetch('https://raw.githubusercontent.com/sannidhi09/jekyll-dynamic-data-load/master/teams.yml')
     .then(response => response.text())
     .then(data => {
         var obj = jsyaml.load( data );
@@ -31,7 +31,7 @@ fetch('https://raw.githubusercontent.com/apache/airavata-site/asf-site/source/_d
             var row = document.createElement('tr');
             for(var j=0;j<colums.length;j++){
                 var cell = document.createElement('td');
-                var cellText = document.createTextNode(obj[i][colums[j]].replace(' [at] ', '@').replace(' [dot] ','.'));
+                var cellText = document.createTextNode(obj[i][colums[j]].replaceAll(' [at] ', '@').replaceAll(' [dot] ','.'));
                 cell.appendChild(cellText);
                 row.appendChild(cell);
             }
